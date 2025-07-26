@@ -19,9 +19,9 @@
   - SBBuddy -T "Basel SBB" -t 10:00
   - SBBuddy -T "Basel SBB" -d 2025-07-28 -t 14:50
 
-- Connections from a specific date and/or time
+- Connections from a specific date and/or time (yyyy-mm-dd or dd.mm.yyyy)
   - Examples:
-  - SBBuddy -C "Basel SBB" -C "Zürich HB" -d 2025-08-14
+  - SBBuddy -C "Basel SBB" -C "Zürich HB" -d 14.08.2025
   - SBBuddy -C "Basel SBB" -C "Zürich HB" -d 2025-08-14 -t 10:00
 
 - Scroll through connection lists (forward and backward)
