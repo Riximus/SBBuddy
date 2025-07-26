@@ -1,0 +1,34 @@
+{
+  "stations": [
+    {
+      "id": "8500309",
+      "name": "Chur",
+      "score": null,
+      "coordinate": {"type": "WGS84", "x": 9.528, "y": 46.853}
+    },
+    {
+      "id": "8507000",
+      "name": "Bern",
+      "score": null,
+      "coordinate": {"type": "WGS84", "x": 7.439, "y": 46.948}
+    },
+    {
+      "id": "8500010",
+      "name": "Basel SBB",
+      "score": null,
+      "coordinate": {"type": "WGS84", "x": 7.589, "y": 47.547}
+    },
+    {
+      "id": "8501120",
+      "name": "Lausanne, Riponne-M. Béjart",
+      "score": null,
+      "coordinate": {"type": "WGS84", "x": 6.633, "y": 46.523}
+    },
+    {
+      "id": "8503000",
+      "name": "Zürich Altstetten",
+      "score": null,
+      "coordinate": {"type": "WGS84", "x": 8.484, "y": 47.392}
+    }
+  ]
+}

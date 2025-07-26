@@ -1,0 +1,47 @@
+{
+  "connections": [
+    {
+      "from": {
+        "station": {"id": "8500309", "name": "Chur"},
+        "departure": "2024-01-01T12:30:00+01:00"
+      },
+      "to": {
+        "station": {"id": "8503000", "name": "Zürich Altstetten"},
+        "arrival": "2024-01-01T14:20:00+01:00"
+      },
+      "duration": "01:50:00",
+      "sections": [
+        {
+          "journey": {"name": "IC 3", "category": "IC", "number": "3", "operator": "SBB", "to": "Zürich HB"},
+          "departure": {
+            "station": {"id": "8500309", "name": "Chur"},
+            "departure": "2024-01-01T12:30:00+01:00",
+            "platform": "1",
+            "prognosis": {"platform": "1"}
+          },
+          "arrival": {
+            "station": {"id": "8503007", "name": "Zürich HB"},
+            "arrival": "2024-01-01T14:00:00+01:00",
+            "platform": "5",
+            "prognosis": {"platform": "5"}
+          }
+        },
+        {
+          "journey": {"name": "S 3", "category": "S", "number": "3", "operator": "SBB", "to": "Zürich Altstetten"},
+          "departure": {
+            "station": {"id": "8503007", "name": "Zürich HB"},
+            "departure": "2024-01-01T14:05:00+01:00",
+            "platform": "6",
+            "prognosis": {"platform": "6"}
+          },
+          "arrival": {
+            "station": {"id": "8503000", "name": "Zürich Altstetten"},
+            "arrival": "2024-01-01T14:20:00+01:00",
+            "platform": "2",
+            "prognosis": {"platform": "2"}
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "station": {
+    "id": "8500309",
+    "name": "Chur",
+    "coordinate": {"type": "WGS84", "x": 9.528, "y": 46.853}
+  },
+  "stationboard": [
+    {
+      "stop": {
+        "station": {"id": "8500309", "name": "Chur"},
+        "departure": "2024-01-01T12:30:00+01:00",
+        "arrival": "",
+        "platform": "1",
+        "prognosis": {"platform": "1"}
+      },
+      "name": "RE",
+      "category": "RE",
+      "number": "1234",
+      "to": "Basel SBB"
+    }
+  ]
+}

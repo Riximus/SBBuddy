@@ -1,0 +1,54 @@
+version: 2
+
+project_name: SBBuddy
+
+# 1) Define your builds (one for Unix, one for Windows)
+builds:
+  - id: swiss-unix
+    main: ./cmd/SBBuddy
+    binary: SBBuddy
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+
+  - id: swiss-windows
+    main: ./cmd/SBBuddy
+    binary: SBBuddy
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+    goarch:
+      - amd64
+      - arm64
+
+# 2) Archives: use `ids` instead of `builds`, and `formats` instead of `format`
+archives:
+  - id: unix
+    ids:
+      - swiss-unix          # <– replaces `builds:` :contentReference[oaicite:0]{index=0}
+    formats:
+      - tar.gz              # <– replaces `format:` :contentReference[oaicite:1]{index=1}
+    name_template: "{{ .ProjectName }}_v{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    files:
+      - install.sh
+
+  - id: windows
+    ids:
+      - swiss-windows
+    formats:
+      - zip
+    name_template: "{{ .ProjectName }}_v{{ .Version }}_windows_{{ .Arch }}"
+    files:
+      - install.ps1
+
+# 3) GitHub release settings remain the same
+release:
+  github:
+    owner: Riximus
+    name: SBBuddy

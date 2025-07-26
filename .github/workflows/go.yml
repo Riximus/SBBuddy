@@ -1,0 +1,73 @@
+name: CI & Release
+
+# 1. Run tests on pushes and PRs; run release only on tag pushes
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*.*.*'
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write  # needed by GoReleaser to push GitHub releases
+
+jobs:
+  # Job A: run tests
+  test:
+    name: 🧪 Run tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.24'   # adjust to your minimum supported Go version
+
+      - name: Cache Go modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+
+      - name: Install dependencies
+        run: go mod download
+
+      - name: Run tests
+        run: go test ./... -v
+
+  # Job B: release (only on tag pushes)
+  release:
+    name: 🚀 Release via GoReleaser
+    needs: test
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code (full history)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.24'
+
+      - name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v6
+        with:
+          # choose 'goreleaser' (OSS) or 'goreleaser-pro' if you have a Pro key
+          distribution: goreleaser
+          # pick the version constraint you want
+          version: '~> v2'
+          args: release --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # if using Pro, uncomment and set this secret:
+          # GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
