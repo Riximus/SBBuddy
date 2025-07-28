@@ -1,5 +1,7 @@
 # SBBuddy
 
+![SBBuddy](./gifs/sbbuddy-tui.gif)
+
 ## Current Functionalities
 - Look up timetable of a station
   - Example: SBBuddy -T "Basel SBB"
